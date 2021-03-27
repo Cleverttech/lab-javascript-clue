@@ -120,7 +120,5 @@ let pickMystery = () => {
 // ITERATION 3
 
 let revealMystery = (obj) => {
-  obj = pickMystery();
-
   return `${obj.suspect.firstName} ${obj.suspect.lastName} killed Mr. Boddy using the ${obj.weapon.name} in the ${obj.room.name}!`;
 };
