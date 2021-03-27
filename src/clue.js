@@ -65,8 +65,9 @@ const suspectsArray = [
   },
 ];
 
-// Rooms Collection
-const roomsArray = [
+// Weapons Collection
+
+const weaponsArray = [
   { name: "rope", weight: 10 },
   { name: "knife", weight: 8 },
   { name: "candlestick", weight: 2 },
@@ -78,8 +79,8 @@ const roomsArray = [
   { name: "pistol", weight: 20 },
 ];
 
-// Weapons Collection
-const weaponsArray = [
+// Rooms Collection
+const roomsArray = [
   { name: "Dining Room" },
   { name: "Conservatory" },
   { name: "Kitchen" },
@@ -101,10 +102,25 @@ const weaponsArray = [
 let selectRandom = (arr) => {
   if (arr.length == 1) return arr[0];
 
-  let randomArr = arr[Math.floor(Math.random() * arr.length)];
-  return randomArr;
+  return arr[Math.floor(Math.random() * arr.length)];
 };
 
 // ITERATION 2
+let pickMystery = () => {
+  let suspect = JSON.parse(JSON.stringify(selectRandom(suspectsArray)));
+  let weapon = JSON.parse(JSON.stringify(selectRandom(weaponsArray)));
+  let room = JSON.parse(JSON.stringify(selectRandom(roomsArray)));
+  return {
+    suspect: suspect,
+    weapon: weapon,
+    room: room,
+  };
+};
 
 // ITERATION 3
+
+let revealMystery = (obj) => {
+  obj = pickMystery();
+
+  return `${obj.suspect.firstName} ${obj.suspect.lastName} killed Mr. Boddy using the ${obj.weapon.name} in the ${obj.room.name}!`;
+};
